@@ -1,0 +1,177 @@
+/* ===== DAILYFIT ANIMATIONS ===== */
+
+/* === KEYFRAMES === */
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideOutToTop {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glassIn {
+  from { opacity: 0; transform: translateX(-8px) scale(0.96); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes heartBurst {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.5); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes cardSwipeLeft {
+  from { transform: translateX(0) rotate(0deg); opacity: 1; }
+  to { transform: translateX(-120%) rotate(-15deg); opacity: 0; }
+}
+
+@keyframes cardSwipeRight {
+  from { transform: translateX(0) rotate(0deg); opacity: 1; }
+  to { transform: translateX(120%) rotate(15deg); opacity: 0; }
+}
+
+@keyframes cardEnterRight {
+  from { transform: translateX(120%) rotate(8deg); opacity: 0; }
+  to { transform: translateX(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes cardEnterBottom {
+  from { transform: translateY(60px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dragging {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* === CLASSES === */
+
+.card-enter { animation: cardEnterBottom 0.5s var(--spring) both; }
+.card-enter-right { animation: cardEnterRight 0.4s var(--spring) both; }
+.card-exit-left { animation: cardSwipeLeft 0.35s var(--spring) both; }
+.card-exit-right { animation: cardSwipeRight 0.35s var(--spring) both; }
+
+.fade-in { animation: fadeSlideIn 0.3s var(--spring) both; }
+
+.count-up { animation: countUp 0.4s var(--spring) both; }
+
+/* STAGGER CHILDREN */
+.stagger > * { animation: fadeSlideIn 0.4s var(--spring) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; }
+
+/* HOVER LIFT */
+.hover-lift {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* DROP ZONE ACTIVE */
+.drop-zone-active {
+  animation: pulse 1.5s ease-in-out infinite;
+  border-color: var(--accent) !important;
+}
+
+/* DRAG ITEM */
+.drag-item-active {
+  animation: dragging 0.3s ease-in-out infinite;
+  box-shadow: var(--shadow-xl) !important;
+  z-index: 9999;
+  opacity: 0.85;
+}
+
+/* LOADING SPINNER */
+.loading-spinner {
+  width: 24px; height: 24px;
+  border: 2px solid var(--surface-3);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spinSlow 0.8s linear infinite;
+  display: inline-block;
+}
+
+/* TAG HOVER */
+.tag {
+  transition: transform 0.15s var(--spring);
+}
+.tag:hover {
+  transform: translateY(-2px) scale(1.06);
+}
+
+/* MOOD PILL CURSOR */
+.mood-pill-cursor {
+  position: absolute;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  transition: all 0.3s var(--spring);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .card-enter, .card-enter-right, .card-exit-left, .card-exit-right,
+  .fade-in, .count-up, .stagger > * {
+    animation: none !important;
+  }
+  .skeleton { animation: none; background: var(--surface-3); }
+  .loading-spinner { animation: spinSlow 2s linear infinite; }
+}
