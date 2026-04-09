@@ -1,15 +1,15 @@
 // ===== APP.JS — Point d'entrée DailyFit =====
-import { loadAll, saveAll, saveAllNow, createPiece, createOutfit, backup, generateId, FRAICHEUR_DEFAULTS } from './data.js';
-import { fetchWeather, applyWindChill, checkMatinSoirAlert, invalidateCache } from './weather.js';
-import { genererOutfit, genererSemaine } from './generator.js';
-import { initSettings, renderSettings, openVoyageModal, saveVoyagePieces, toggleVoyageBanner, applyTheme } from './settings.js';
+import { loadAll, saveAll, saveAllNow, createPiece, createOutfit, backup, generateId, FRAICHEUR_DEFAULTS } from 'data.js';
+import { fetchWeather, applyWindChill, checkMatinSoirAlert, invalidateCache } from 'weather.js';
+import { genererOutfit, genererSemaine } from 'generator.js';
+import { initSettings, renderSettings, openVoyageModal, saveVoyagePieces, toggleVoyageBanner, applyTheme } from 'settings.js';
 import {
   showToast, openModal, closeModal, navigateTo,
   renderWeatherWidget, renderOutfitCard, renderPiecesGrid, renderOutfitsGrid,
   renderAlternatives, renderCalendar, renderHistoryTimeline, renderHeaderDate,
   renderStats, renderHistoryQuickStats, renderWeekPlanning, setupSwipe,
   moodEmoji, catEmoji, animateCount
-} from './ui.js';
+} from 'ui.js';
 
 // ===== STATE =====
 let data = null;
